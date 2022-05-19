@@ -10,11 +10,11 @@ GET /user/1
 // gin example
 r.GET('/user/:id', GetUserByID)
 
-func GetUserById(c *gin.Context) {
+func GetUserByID(c *gin.Context) {
 	id := c.Param("id") // 提取id
 	// GetDB() 返回 db 指针
 	controller := UserController{repo: &MysqlUserRepo{db: GetDB()}}
-	controller.GetUserById(id)
+	controller.GetUserByID(id)
 }
 ```
 ```go
@@ -72,7 +72,7 @@ func (u *UserUseCase) GetUserByID(id string) {
 ### domain 领域层
 ```go
 type User struct {
-	Id string
+	ID string
 }
 type UserRepo interface {
 	GetByID(id string) (*User, error)
