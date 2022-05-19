@@ -12,8 +12,7 @@ r.GET('/user/:id', GetUserByID)
 
 func GetUserByID(c *gin.Context) {
 	id := c.Param("id") // 提取id
-	// GetDB() 返回 db 指针
-	controller := UserController{repo: &MysqlUserRepo{db: GetDB()}}
+	controller := adapter.UserController{C: c}
 	controller.GetUserByID(id)
 }
 ```
